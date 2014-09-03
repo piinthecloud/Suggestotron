@@ -68,7 +68,9 @@ end
 
 def downvote
   @topic = Topic.find(params[:id])
+  if @topic.votes.count > 0
   @topic.votes.first.destroy
+end
   redirect_to(topics_path)
 end
 
