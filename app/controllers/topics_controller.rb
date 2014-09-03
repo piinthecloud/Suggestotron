@@ -60,6 +60,8 @@ class TopicsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 def upvote
   @topic = Topic.find(params[:id])
   @topic.votes.create
@@ -68,9 +70,7 @@ end
 
 def downvote
   @topic = Topic.find(params[:id])
-  if @topic.votes.count > 0
-  @topic.votes.first.destroy
-end
+  @topic.downvotes.create
   redirect_to(topics_path)
 end
 
